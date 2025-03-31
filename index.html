@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Firebase SDK CDN links -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="gaya.css">
+    <title>Truth or Dare Chat</title>
+    <link rel="icon" type="image/png" href="Lopee.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Pattaya&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Truth or Dare</h1>
+
+    <!-- Truth or Dare Buttons -->
+    <div class="tod">
+        <button class="btnt" onmouseover="showText('Truth?')" onmouseout="clearText()" onclick="Gettrut()">Truth</button>
+        <button class="btnd" onmouseover="showText('Dare?')" onmouseout="clearText()" onclick="Getdare()">Dare</button>
+    </div>
+
+    <!-- Display Area for ToD Hover -->
+    <p id="displayText">Apa nich?</p>
+
+    <!-- ToD Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <p id="popupText"></p>
+        </div>
+    </div>
+
+    <!-- Image Modal Placeholder -->
+    <!-- (Modal will be created dynamically by JS if needed) -->
+
+    <!-- Chat Section -->
+    <div class="comment-section">
+        <h2>Chat</h2>
+
+        <!-- ******* Message Display Area (Moved BEFORE Form) ******* -->
+        <div class="comments-container" id="comments-container">
+            <!-- Comments will be dynamically loaded here -->
+        </div>
+
+        <!-- ******* Chat Input Form Area (Moved AFTER Messages) ******* -->
+        <div class="comment-form">
+            <!-- 1. Username Input (First item in the flex column) -->
+            <input type="text" id="username" placeholder="Namamu" required>
+
+            <!-- 2. Media Preview Area (Second item in the flex column) -->
+            <div id="media-preview" style="position: relative;"> <!-- Inline style bisa dihapus karena sudah ada di CSS -->
+                 <!-- Preview content goes here -->
+                 <button id="cancel-media" style="display: none;">×</button> <!-- Correctly nested -->
+            </div>
+
+            <!-- 3. Text Input and Action Buttons Area (Third item in the flex column) -->
+            <div class="message-input-area">
+                <!-- Textarea Container -->
+                <div class="message-container">
+                    <textarea id="comment-text" placeholder="Kirim pesan..." rows="1"></textarea>
+                </div>
+                <!-- Buttons Container -->
+                <div class="message-actions">
+                    <div class="upload-container">
+                         <label for="media-upload" class="upload-label" title="Lampirkan Foto/Video">
+                             📎
+                         </label>
+                         <input type="file" id="media-upload" accept="image/*,video/*" style="display: none;">
+                    </div>
+                    <button id="submit-comment" title="Kirim">
+                        <!-- Send icon/text added via CSS ::before -->
+                    </button>
+                    <!-- Cancel Edit button will be dynamically added here by JS -->
+                </div>
+            </div>
+        </div>
+
+    <!-- Firebase Configuration -->
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAcTcLxYUfYkA8VpeGAYTGkv9vrFmt08DA", // Keep this secure if deploying publicly
+          authDomain: "todwkwkwk-89c14.firebaseapp.com",
+          databaseURL: "https://todwkwkwk-89c14-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "todwkwkwk-89c14",
+          storageBucket: "todwkwkwk-89c14.appspot.com", // Corrected storage bucket format
+          messagingSenderId: "432865202390",
+          appId: "1:432865202390:web:92c9b6979a7793213ef977",
+          measurementId: "G-KQCSBZ9LV5"
+        };
+
+        // Initialize Firebase with compatibility version
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Main Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>

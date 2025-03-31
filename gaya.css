@@ -1,0 +1,266 @@
+/* --- START OF FILE gaya.css --- */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ... (Keep body, h1, tod, buttons, popup styles as they were) ... */
+body { background: linear-gradient(to right, #ff7e5f, #feb47b); font-family: sans-serif; margin: 0; /* Adjust padding based on FINAL height of fixed form */ padding: 0 0 150px 0; /* Increased slightly */ display: flex; flex-direction: column; min-height: 100vh; }
+h1 { font-family: 'Comic Neue', cursive; position: relative; font-weight: 700; text-align: center; color: white; margin-top: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); flex-shrink: 0; }
+.tod { position: relative; margin: 20px auto 40px auto; padding: 10px 20px; display: flex; justify-content: center; gap: 20px; font-family: 'Comic Neue', cursive; flex-shrink: 0; }
+.btnt, .btnd { padding: 15px 35px; border-radius: 25px; color: aliceblue; font-weight: 1000; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+.btnt { background-color: green; }
+.btnd { background-color: red; }
+.btnt:hover, .btnd:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+.btnt:hover { background-color: darkgreen; }
+.btnd:hover { background-color: darkred; }
+p#displayText { display: flex; justify-content: center; font-family: 'Comic Neue', cursive; color: white; font-size: 1.2em; margin-bottom: 20px; min-height: 1.5em; flex-shrink: 0; }
+.popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-index: 1000; }
+.popup-content { background: white; padding: 30px; border-radius: 15px; text-align: center; width: 90%; max-width: 400px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: sans-serif; }
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; font-weight: bold; color: #888; cursor: pointer; transition: color 0.2s; }
+.close-btn:hover { color: #333; }
+
+
+/* --- Chat System Styles --- */
+.comment-section { display: flex; flex-direction: column; max-width: 800px; width: 95%; margin: 0 auto 0 auto; background-color: #f0f0f0; border-radius: 15px 15px 0 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); overflow: hidden; flex-grow: 1; }
+.comment-section h2 { text-align: center; padding: 15px; margin: 0; background-color: #e9e9e9; color: #555; font-family: sans-serif; font-size: 1.1em; font-weight: 600; border-bottom: 1px solid #ddd; flex-shrink: 0; position: relative; z-index: 1; }
+.comments-container { flex-grow: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+
+
+/* --- Chat Input Area (Fixed Form) --- */
+.comment-form {
+    position: fixed; /* Sticks to bottom */
+    bottom: 0;
+    left: 0; /* Full width */
+    width: 100%;
+    z-index: 100; /* Important: Above normal content, below modals */
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+
+    padding: 8px 15px 10px 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.comment-form input#username { padding: 10px 12px; border: 1px solid #ddd; border-radius: 18px; font-family: sans-serif; font-size: 0.9em; background-color: #fff; flex-shrink: 0; }
+.comment-form input#username:focus { outline: none; border-color: #aaa; box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); }
+
+/* --- Media Preview Styling --- */
+#media-preview {
+    align-self: flex-start; /* Align to start within the form */
+    /* Use display: flex or grid if multiple previews are needed */
+    min-height: 1px; /* Ensure it takes up space even when empty if needed */
+    flex-shrink: 0;
+}
+/* Styles for the container created in JS for preview + cancel */
+#media-preview > div {
+    position: relative;
+    display: inline-block; /* Or flex */
+}
+#media-preview img,
+#media-preview video {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+/* Cancel button is styled inline in JS currently, could move here using #cancel-media */
+/* Example if moved to CSS: */
+/*
+#cancel-media {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: rgba(40, 40, 40, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+#cancel-media:hover {
+    background: rgba(220, 53, 69, 1);
+    transform: scale(1.1);
+}
+*/
+
+
+/* Message input area (textarea + buttons row) */
+.message-input-area { display: flex; align-items: flex-end; gap: 10px; flex-shrink: 0; }
+.message-container { flex-grow: 1; position: relative; }
+.message-container textarea#comment-text { width: 100%; min-height: 40px; max-height: 90px; padding: 10px 15px; border: 1px solid #ddd; border-radius: 20px; font-family: sans-serif; resize: none; line-height: 1.4; font-size: 1em; background-color: #fff; overflow-y: auto; }
+.message-container textarea#comment-text:focus { outline: none; border-color: #aaa; box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); }
+.message-actions { display: flex; align-items: center; gap: 8px; padding-bottom: 5px; flex-shrink: 0; }
+
+/* Upload & Send Buttons */
+.upload-container { display: flex; align-items: center; }
+.upload-label { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; font-size: 1.4em; color: #007bff; background: transparent; border-radius: 50%; cursor: pointer; transition: all 0.2s ease; }
+.upload-label:hover { background-color: rgba(0, 123, 255, 0.1); transform: scale(1.1); }
+#media-upload { display: none; }
+#submit-comment { padding: 0; width: 38px; height: 38px; background-color: #007bff; color: white; border: none; border-radius: 50%; cursor: pointer; font-weight: bold; transition: background-color 0.3s, transform 0.2s; font-size: 1.2em; display: flex; align-items: center; justify-content: center; line-height: 1; flex-shrink: 0; }
+#submit-comment::before { content: '➤'; font-size: 1em; transform: translateX(1px); }
+#submit-comment:hover { background-color: #0056b3; transform: scale(1.1); }
+#submit-comment:disabled { background-color: #a0cfff; cursor: not-allowed; transform: none; }
+#submit-comment:disabled:hover { background-color: #a0cfff; transform: none; }
+/* Editing state for submit button */
+#submit-comment.editing { background-color: #28a745; } /* Green for save */
+#submit-comment.editing::before { content: '✓'; font-size: 1.2em; transform: none;} /* Checkmark */
+#submit-comment.editing:hover { background-color: #218838; }
+
+/* Cancel Edit Button (Dynamically added) */
+.cancel-button {
+    background-color: #dc3545; /* Red */
+    border: none;
+    border-radius: 50%; /* Match send button */
+    color: white;
+    cursor: pointer;
+    margin-left: 8px; /* Spacing from send button */
+    width: 38px; /* Match send button */
+    height: 38px; /* Match send button */
+    font-size: 1.1em; /* Cross size */
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.cancel-button::before { content: '×'; } /* Display cross */
+.cancel-button:hover { background-color: #c82333; transform: scale(1.1); }
+
+/* --- Comment Bubbles --- */
+.comment { padding: 8px 12px; border-radius: 18px; max-width: 75%; width: fit-content; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); word-wrap: break-word; line-height: 1.4; font-family: sans-serif; position: relative; opacity: 0; transform: translateY(10px); animation: fadeInUp 0.3s ease forwards; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+.comment.received { background-color: #fff; color: #333; align-self: flex-start; border-top-left-radius: 5px; }
+.comment.sent { background-color: #dcf8c6; color: #333; align-self: flex-end; border-top-right-radius: 5px; }
+.comment.system { background-color: #e6f7ff; color: #555; align-self: center; max-width: 90%; font-size: 0.85em; font-style: italic; text-align: center; border-radius: 10px; box-shadow: none; border: 1px dashed #b3e0ff; padding: 6px 10px; }
+/* Removed redundant system styles for header/body */
+.comment-header { display: flex; align-items: center; margin-bottom: 4px; flex-wrap: wrap; }
+.comment-username { font-weight: 600; color: #3498db; font-size: 0.9em; margin-right: 8px; }
+.comment-body { font-size: 1em; margin-top: 2px; }
+.comment-body .comment-text { white-space: pre-wrap; } /* Preserve line breaks */
+
+/* Styles for Media within Comments */
+.comment-media {
+    max-width: 100%; /* Fit within bubble */
+    max-height: 280px; /* Limit height */
+    border-radius: 6px;
+    margin-top: 6px;
+    display: block;
+    background-color: #eee; /* Placeholder bg */
+}
+.comment-media-image {
+    cursor: pointer; /* Indicate clickable */
+}
+.comment-media-video {
+    /* Video specific styles if needed */
+}
+
+/* Meta info in comment header */
+.comment-header .comment-meta-spacer { flex-grow: 1; } /* Pushes meta to the right */
+.comment-header .comment-date { color: #888; font-size: 0.75em; white-space: nowrap; padding-left: 10px; } /* Keep padding for spacing */
+.edited-label { color: #aaa; font-size: 0.75em; font-style: italic; margin-left: 5px; white-space: nowrap; }
+.edit-button { background-color: transparent; border: none; color: #007bff; cursor: pointer; font-size: 0.8em; margin-left: 5px; padding: 0 4px; white-space: nowrap; }
+.edit-button:hover { text-decoration: underline; }
+
+
+/* Typing Indicator */
+.comment.typing-indicator { background-color: #f8f9fa; color: #6c757d; font-style: italic; align-self: flex-start; padding: 6px 12px; border: 1px solid #eee; box-shadow: none; animation: none; opacity: 1; transform: none; border-radius: 15px; }
+.comment.typing-indicator .comment-header { margin-bottom: 0; }
+.comment.typing-indicator .comment-username { color: #6c757d; font-weight: 500; }
+.comment.typing-indicator .comment-date { font-size: 0.8em; margin-left: 5px; }
+
+
+/* --- Image Modal Styles --- */
+#imageModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* MUST be fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    z-index: 1001; /* MUST be higher than comment-form (100) */
+    cursor: pointer; /* Click background to close */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Fade transition */
+    padding: 20px; /* Add padding for smaller screens */
+}
+
+#imageModal.visible {
+    opacity: 1; /* Fade in */
+}
+
+#imageModal.closing {
+    opacity: 0; /* Fade out */
+}
+
+#modalImageContent {
+    display: block;
+    max-width: 95%; /* Limit size */
+    max-height: 95%;
+    object-fit: contain; /* Prevent distortion */
+    border-radius: 5px; /* Optional */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Optional shadow */
+    cursor: default; /* Normal cursor over image */
+    transform: scale(0.8); /* Start scaled down */
+    transition: transform 0.3s ease; /* Scale transition */
+}
+
+#modalImageContent.visible {
+    transform: scale(1); /* Scale up */
+}
+
+#modalImageContent.closing {
+    transform: scale(0.8); /* Scale down on close */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body { padding-bottom: 140px; /* Adjusted padding for fixed form height */ }
+    .comment-section { width: 100%; max-width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
+    .comments-container { padding: 10px; }
+    .comment-form { padding: 8px 10px 10px 10px; gap: 5px; }
+     /* Preview size might need further reduction on mobile */
+     #media-preview img,
+     #media-preview video { max-width: 80px; max-height: 80px; }
+     /* Adjust cancel button size/position if needed for smaller preview */
+     /* Example:
+     #cancel-media { width: 18px; height: 18px; font-size: 10px; line-height: 18px; top: -5px; right: -5px; }
+     */
+
+    /* Adjust button sizes */
+    .upload-label, #submit-comment, .cancel-button { width: 36px; height: 36px; font-size: 1.3em; }
+     #submit-comment::before { font-size: 0.9em; }
+     #submit-comment.editing::before { font-size: 1.1em;}
+     .cancel-button::before { font-size: 1.1em; }
+
+
+     h1 { margin-top: 15px; font-size: 1.8em; }
+    .tod { margin: 15px auto 20px auto; gap: 15px; }
+    .btnt, .btnd { padding: 12px 30px; }
+    p#displayText { margin-bottom: 15px; }
+
+    .comment { max-width: 85%; } /* Allow slightly wider comments */
+    .comment-media { max-height: 220px; } /* Slightly smaller max media height */
+}

@@ -1,0 +1,335 @@
+const defaultText = "Apa nich?";
+
+
+
+function showText(text) {
+    document.getElementById("displayText").textContent = text;
+}
+
+function clearText() {
+    document.getElementById("displayText").textContent = defaultText; // Balikin teks default
+}
+
+const truths = [
+    "Apa rahasia yang belum pernah kamu ceritakan ke siapa pun?",
+    "Siapa orang yang diam-diam kamu sukai?",
+    "Pernahkah kamu berbohong ke orang tua?",
+    "Apa ketakutan terbesarmu?",
+    "Apa mimpi terliar yang pernah kamu miliki?",
+    "Pernahkah kamu mencuri sesuatu kecil dari toko?",
+    "Apa kenangan memalukan yang paling kamu ingat?",
+    "Siapa teman yang paling kamu percaya?",
+    "Apa hal teraneh yang pernah kamu lakukan?",
+    "Apa yang paling kamu sesali?",
+    "Pernahkah kamu merasa iri kepada temanmu?",
+    "Apa yang membuatmu merasa paling tidak nyaman?",
+    "Pernahkah kamu merasa bahwa kamu tidak cukup baik?",
+    "Apa rahasia tentang dirimu yang ingin kamu ubah?",
+    "Siapa yang menjadi inspirasimu dalam hidup?",
+    "Pernahkah kamu menangis di depan umum?",
+    "Apa impian terbesarmu yang ingin kamu capai?",
+    "Apa sifat burukmu yang paling ingin kamu hilangkan?",
+    "Apa yang paling membuatmu marah?",
+    "Pernahkah kamu memendam perasaan yang menyakitkan?",
+    "Apa yang membuatmu merasa bahagia tanpa alasan?",
+    "Apa kenangan indah yang tidak pernah kamu lupakan?",
+    "Apa yang membuatmu merasa bangga terhadap dirimu sendiri?",
+    "Pernahkah kamu merasa gagal dalam suatu hal?",
+    "Apa alasan terbesar kamu untuk tersenyum setiap hari?",
+    "Apa rahasia kecil yang membuatmu merasa istimewa?",
+    "Apa hal paling spontan yang pernah kamu lakukan?",
+    "Pernahkah kamu mengkhianati kepercayaan seseorang?",
+    "Apa yang paling kamu takuti di masa depan?",
+    "Apa mimpi terliar yang pernah kamu bayangkan?",
+    "Pernahkah kamu merasa tidak dipahami oleh orang tua?",
+    "Apa yang ingin kamu ubah tentang dirimu?",
+    "Apa pengalaman yang paling membuatmu berubah?",
+    "Siapa yang paling mempengaruhi hidupmu?",
+    "Apa kejadian yang membuatmu merasa sangat sedih?",
+    "Apa pelajaran hidup terbesar yang pernah kamu pelajari?",
+    "Apa hal yang paling kamu syukuri dalam hidup?",
+    "Pernahkah kamu merasa kesepian di tengah keramaian?",
+    "Apa yang ingin kamu capai dalam lima tahun ke depan?",
+    "Pernahkah kamu merasa bersalah karena melakukan sesuatu?",
+    "Apa yang membuatmu merasa paling berani?",
+    "Apa momen paling berkesan selama sekolah?",
+    "Siapa yang paling pernah membuatmu tersenyum?",
+    "Apa kenangan masa kecil yang paling kamu ingat?",
+    "Apa yang paling kamu sukai dari dirimu sendiri?",
+    "Apa hal yang paling ingin kamu pelajari di masa depan?",
+    "Pernahkah kamu menyesal tidak melakukan sesuatu?",
+    "Apa yang membuatmu merasa paling terinspirasi?",
+    "Apa kesalahan terbesar yang pernah kamu buat?",
+    "Apa yang paling kamu takutkan saat sendirian?",
+    "Apa mimpi yang belum pernah kamu ungkapkan kepada siapa pun?",
+    "Pernahkah kamu merasa cemburu pada keberhasilan temanmu?",
+    "Apa yang paling kamu rindukan dari masa lalu?",
+    "Pernahkah kamu merasa bahwa kamu tidak cukup dihargai?",
+    "Apa harapan terbesarmu untuk masa depan?",
+    "Apa yang membuatmu merasa paling nyaman?",
+    "Pernahkah kamu merasa takut untuk mencoba hal baru?",
+    "Apa yang paling kamu takuti dari perubahan?",
+    "Apa yang membuatmu merasa paling termotivasi?",
+    "Pernahkah kamu berbohong untuk menyelamatkan diri?",
+    "Apa yang paling kamu khawatirkan untuk dirimu sendiri?",
+    "Apa kenangan terindah yang pernah kamu alami?",
+    "Pernahkah kamu merasa gagal dalam hubungan pertemanan?",
+    "Apa yang membuatmu merasa paling diterima oleh orang lain?",
+    "Apa yang paling membuatmu bangga atas pencapaianmu?",
+    "Pernahkah kamu merasa tersisih di antara teman-teman?",
+    "Apa yang ingin kamu ubah dari sistem sekolah?",
+    "Apa pendapatmu tentang tekanan teman sebaya?",
+    "Pernahkah kamu merasa kurang percaya diri?",
+    "Apa yang membuatmu merasa paling hidup?",
+    "Apa rahasia kecil yang selama ini kamu simpan?",
+    "Apa yang paling kamu hargai dari keluarga?",
+    "Pernahkah kamu merasakan perbedaan antara harapan dan kenyataan?",
+    "Apa yang paling membuatmu takut untuk gagal?",
+    "Apa yang akan kamu lakukan jika punya kesempatan kedua?",
+    "Pernahkah kamu merasa bahwa kamu terlalu sering membandingkan dirimu dengan orang lain?",
+    "Apa yang membuatmu merasa paling bersyukur?",
+    "Apa yang membuatmu merasa paling nyaman ketika sedang sedih?",
+    "Apa momen yang paling membuatmu tersenyum sepanjang hari?",
+    "Pernahkah kamu merasa bahwa kamu tidak mampu mengatasi masalah?",
+    "Apa yang paling kamu sukai dari masa remajamu?",
+    "Apa yang paling membuatmu merasa unik?",
+    "Pernahkah kamu merasa sulit untuk meminta bantuan?",
+    "Apa yang paling membuatmu merasa tertekan di sekolah?",
+    "Apa pendapatmu tentang persahabatan sejati?",
+    "Apa yang membuatmu merasa paling dihargai?",
+    "Apa yang membuatmu merasa paling bersemangat setiap pagi?",
+    "Pernahkah kamu merasa bahwa kamu tidak cukup pandai?",
+    "Apa yang paling kamu inginkan dari hubungan pertemanan?",
+    "Apa yang paling membuatmu merasa aman?",
+    "Pernahkah kamu merasa bahwa kamu terlalu mengharapkan terlalu banyak dari dirimu sendiri?",
+    "Apa yang membuatmu merasa paling diinginkan oleh orang lain?",
+    "Apa yang paling kamu takuti dalam hubungan pertemanan?",
+    "Pernahkah kamu merasa bahwa kamu harus menyembunyikan perasaanmu?",
+    "Apa yang membuatmu merasa paling bebas?",
+    "Apa yang membuatmu merasa paling puas dengan dirimu?",
+    "Pernahkah kamu merasa bahwa kamu tidak pernah cukup berani untuk menyuarakan pendapat?",
+    "Apa yang membuatmu merasa paling berharga?",
+    "Apa yang paling membuatmu merasa dimengerti oleh orang lain?",
+    "Apa pesan yang ingin kamu sampaikan kepada dirimu di masa depan?"
+  ];
+  
+
+  const dares = [
+    "Lakukan tarian aneh selama 30 detik!",
+    "Kirim chat 'Aku suka kamu' ke orang random!",
+    "Bilang 'Aku lapar, traktir dong' ke orang sebelah!",
+    "Selfie dengan ekspresi teraneh dan kirim ke grup!",
+    "Nyanyikan lagu favoritmu dengan suara paling kencang!",
+    "Tiru gaya bicara tokoh kartun favorit selama 1 menit!",
+    "Jadiin semua orang di grup chat panggilan lucu selama 2 menit!",
+    "Coba lari keliling rumah selama 1 menit dengan gaya dramatis!",
+    "Pura-pura jadi pawang angin selama 1 menit!",
+    "Buat video pendek dengan aksi dramatis dan upload ke medsos!",
+    "Berikan pujian aneh ke 3 orang berbeda!",
+    "Bicara dengan aksen asing selama 5 menit tanpa henti!",
+    "Goyang kayak robot selama 30 detik di depan kamera!",
+    "Buat cerita lucu dalam 2 menit dan rekam suaramu!",
+    "Bilang ke orang terdekat bahwa kamu terobsesi sama mereka dengan cara yang gokil!",
+    "Baca puisi ciptaanmu sendiri dengan nada dramatis!",
+    "Nyanyikan lagu anak-anak dengan gaya rock!",
+    "Lakukan 10 push-up sambil teriak 'Aku hebat!'",
+    "Buat video dance ala TikTok selama 15 detik!",
+    "Angkat tangan kiri dan kanan secara bersamaan sambil berteriak 'Aku luar biasa!'",
+    "Pura-pura jadi guru dan ajarin pelajaran favoritmu selama 2 menit!",
+    "Buat gerakan yoga aneh yang kamu sebut 'pose kekuatan'!",
+    "Tirukan suara hewan favoritmu selama 1 menit!",
+    "Ucapkan selamat pagi ke 5 orang dengan cara paling unik!",
+    "Coba bikin lelucon yang bikin semua orang tertawa!",
+    "Bikin daftar 5 hal absurd yang pernah kamu pikirkan hari ini!",
+    "Bicara tanpa kata 'aku' selama 3 menit!",
+    "Pura-pura jadi detektif dan selidiki 'kasus' yang kamu buat sendiri!",
+    "Tirukan karakter film favoritmu selama 1 menit!",
+    "Buat video mini tentang 'hari dalam kehidupan alien'!",
+    "Buat tantangan kecil dengan bicara logat negara lain selama 1 menit!",
+    "Makan camilan sambil berdiri dengan satu kaki selama 30 detik!",
+    "Teriak 'Aku cinta dunia!' dengan suara paling tinggi yang kamu bisa!",
+    "Buat video di mana kamu jatuh cinta sama makanan favoritmu!",
+    "Tirukan selebriti favoritmu selama 1 menit!",
+    "Ajak teman main 'saling menyebut nama lucu' selama 2 menit!",
+    "Buat reaksi dramatis seolah mendengar kabar mengejutkan!",
+    "Tirukan suara karakter kartun yang sedang kamu tonton!",
+    "Bikin lelucon dadakan soal kehidupan sekolah!",
+    "Ubah lirik lagu favoritmu jadi versi kocak dan nyanyikan!",
+    "Ajak keluarga ikut berdansa selama 1 menit!",
+    "Berjalan seperti model di jalan raya selama 30 detik!",
+    "Buat video kreatif dari barang-barang di sekitarmu!",
+    "Pura-pura jadi penyanyi opera selama 1 menit!",
+    "Tirukan lagi gaya bicara karakter film kartun favoritmu!",
+    "Ucapkan 'halo dunia' dengan cara paling dramatis!",
+    "Buat video tiruan iklan favoritmu dengan gaya kamu sendiri!",
+    "Gunakan kata-kata asing selama 1 menit tanpa henti!",
+    "Buat video reaksi seolah kamu terkejut lihat sesuatu yang luar biasa!",
+    "Ceritain lelucon tentang situasi lucu yang kamu alami hari ini!",
+    "Ajak teman main tebak-tebakan dengan gaya unik!",
+    "Tirukan suara robot dan ngobrol selama 1 menit!",
+    "Coba logat daerah lain selama 1 menit!",
+    "Berikan pujian ke orang di sekitarmu dengan cara super unik!",
+    "Buat video pendek seolah jadi pembawa acara TV!",
+    "Bicara ala superhero selama 1 menit!",
+    "Parodikan iklan favoritmu dalam 30 detik!",
+    "Tari spontan di tempat umum selama 30 detik!",
+    "Buat video yang menunjukkan ekspresi wajah paling dramatis!",
+    "Lakukan gerakan stretching dengan gaya yang kocak!",
+    "Tirukan suara karakter game favoritmu selama 1 menit!",
+    "Buat video meniru cara makan orang terkenal!",
+    "Nyanyikan lagu dengan logat terbalik selama 1 menit!",
+    "Buat video sambil melompat-lompat dan tertawa lepas!",
+    "Berdansa tanpa musik selama 1 menit!",
+    "Bermain peran sebagai karakter kartun selama 1 menit!",
+    "Bicara ala pembawa berita selama 1 menit!",
+    "Buat video reaksi seolah baru lihat hal menakjubkan!",
+    "Tirukan suara hewan paling lucu menurutmu!",
+    "Tirukan lagi suara penyanyi favoritmu selama 1 menit!",
+    "Pura-pura jadi pahlawan super selama 1 menit!",
+    "Buat video pendek tarian kocak bareng teman!",
+    "Baca lirik lagu dengan suara paling aneh yang kamu bisa!",
+    "Tampilkan ekspresi wajah super dramatis selama 30 detik!",
+    "Tirukan cara bicara tokoh terkenal dengan gaya kamu sendiri!",
+    "Bicara puitis selama 1 menit tanpa berhenti!",
+    "Tirukan iklan televisi favoritmu dalam 30 detik!",
+    "Jalan dengan gaya super unik di sekitar rumah selama 30 detik!",
+    "Nyanyikan lagu anak-anak dengan suara paling kencang yang ada!",
+    "Tampil dengan tarian ala hip-hop selama 30 detik!",
+    "Tunjukkan cara kamu merayakan sesuatu dengan cara unik!",
+    "Tirukan penyanyi opera selama 1 menit!",
+    "Berdansa dengan gaya bebas selama 1 menit!",
+    "Buat video reaksi seolah mengalami kejadian lucu!",
+    "Bicara dengan logat berbeda-beda selama 2 menit!",
+    "Buat video tema 'perjalanan waktu' dengan aksi spontan!",
+    "Pura-pura jadi selebriti selama 1 menit dan berpose!",
+    "Tirukan suara pembawa acara olahraga selama 1 menit!",
+    "Tunjukkan aksi tari kreatifmu dalam 30 detik!",
+    "Nyanyikan lagu dengan gaya rock selama 1 menit!",
+    "Bikin video kocak bareng teman-teman selama 1 menit!",
+    "Tirukan suara karakter film animasi favoritmu selama 1 menit!",
+    "Tunjukkan gerakan tarian unikmu dalam video singkat!",
+    "Ekspresikan wajah paling ekstrem selama 30 detik dalam video!",
+    "Bacakan puisi dengan nada berbeda-beda selama 1 menit!",
+    "Tunjukkan kemampuan akting spontanmu dalam video singkat!",
+    "Tirukan suara karakter dari game favoritmu selama 1 menit!",
+    "Pura-pura jadi pembawa acara radio selama 1 menit!",
+    "Buat video dengan benda sekitarmu yang jadi alat musik!",
+    "Tirukan gaya selebriti dengan cara yang paling kocak!"
+  ];
+  
+
+  function Gettrut() {
+    const truth = truths[Math.floor(Math.random() * truths.length)];
+    document.getElementById("popupText").textContent = truth;
+    document.getElementById("popup").style.display = "flex"; // Show the popup
+}
+
+function Getdare() {
+    const dare = dares[Math.floor(Math.random() * dares.length)];
+    document.getElementById("popupText").textContent = dare;
+    document.getElementById("popup").style.display = "flex"; // Show the popup
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none"; // Close the popup
+}
+
+// Comment System Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved comments from localStorage
+    loadComments();
+    
+    // Load saved username if available
+    const savedUsername = localStorage.getItem('todUsername');
+    if (savedUsername) {
+        document.getElementById('username').value = savedUsername;
+    }
+    
+    // Add event listener to submit button
+    document.getElementById('submit-comment').addEventListener('click', addComment);
+});
+
+function addComment() {
+    const username = document.getElementById('username').value.trim();
+    const commentText = document.getElementById('comment-text').value.trim();
+    
+    // Validate input
+    if (username === '' || commentText === '') {
+        alert('Please enter both username and comment!');
+        return;
+    }
+    
+    // Save username to localStorage
+    localStorage.setItem('todUsername', username);
+    
+    // Create comment object
+    const comment = {
+        username: username,
+        text: commentText,
+        date: new Date().toLocaleString()
+    };
+    
+    // Save comment
+    saveComment(comment);
+    
+    // Clear only the comment text field, not the username
+    document.getElementById('comment-text').value = '';
+    
+    // Display the new comment
+    displayComment(comment);
+}
+
+function saveComment(comment) {
+    // Get existing comments from localStorage
+    let comments = JSON.parse(localStorage.getItem('todComments')) || [];
+    
+    // Add new comment
+    comments.push(comment);
+    
+    // Save to localStorage
+    localStorage.setItem('todComments', JSON.stringify(comments));
+}
+
+function loadComments() {
+    // Get comments from localStorage
+    const comments = JSON.parse(localStorage.getItem('todComments')) || [];
+    
+    // Display each comment
+    comments.forEach(comment => {
+        displayComment(comment);
+    });
+}
+
+function displayComment(comment) {
+    const commentsContainer = document.getElementById('comments-container');
+    
+    // Create comment element
+    const commentElement = document.createElement('div');
+    commentElement.classList.add('comment');
+    
+    // Comment HTML structure
+    commentElement.innerHTML = `
+        <div class="comment-header">
+            <span class="comment-username">${escapeHTML(comment.username)}</span>
+            <span class="comment-date">${comment.date}</span>
+        </div>
+        <div class="comment-body">
+            ${escapeHTML(comment.text)}
+        </div>
+    `;
+    
+    // Add to container (newest at the top)
+    commentsContainer.insertBefore(commentElement, commentsContainer.firstChild);
+}
+
+// Helper function to escape HTML to prevent XSS
+function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[tag]));
+}
