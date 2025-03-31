@@ -866,7 +866,7 @@ function handleTypingInput() {
         }
 
         clearTimeout(typingTimeout);
-        typingTimeout = setTimeout(removeTypingStatus, 2000);
+        typingTimeout = setTimeout(removeTypingStatus, 800);
     }
 }
 
