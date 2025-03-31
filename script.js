@@ -824,7 +824,7 @@ function listenForTypingStatus() {
 
         Object.keys(typingUsers).forEach(username => {
             const userData = typingUsers[username];
-            const isStale = userData.timestamp && (Date.now() - userData.timestamp > 5000);
+            const isStale = userData.timestamp && (Date.now() - userData.timestamp > 800);
 
             if (username !== currentUsername && !isStale) {
                 const typingIndicatorData = { username: username, isTypingIndicator: true };
