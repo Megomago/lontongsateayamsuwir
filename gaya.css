@@ -5,7 +5,7 @@
 }
 
 /* ... (Keep body, h1, tod, buttons, popup styles as they were) ... */
-body { background: linear-gradient(to left, #ff7e5f, #feb47b); font-family: sans-serif; margin: 0; /* Adjust padding based on FINAL height of fixed form */ padding: 0 0 150px 0; /* Increased slightly */ display: flex; flex-direction: column; min-height: 100vh; }
+body { background: linear-gradient(to right, #ff7e5f, #feb47b); font-family: sans-serif; margin: 0; /* Adjust padding based on FINAL height of fixed form */ padding: 0 0 150px 0; /* Increased slightly */ display: flex; flex-direction: column; min-height: 100vh; }
 h1 { font-family: 'Comic Neue', cursive; position: relative; font-weight: 700; text-align: center; color: white; margin-top: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); flex-shrink: 0; }
 .tod { position: relative; margin: 20px auto 40px auto; padding: 10px 20px; display: flex; justify-content: center; gap: 20px; font-family: 'Comic Neue', cursive; flex-shrink: 0; }
 .btnt, .btnd { padding: 15px 35px; border-radius: 25px; color: aliceblue; font-weight: 1000; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease; }
